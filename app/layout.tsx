@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-// Load local font from public/fonts
-const myLocalFont = localFont({
-  src: [
-    { path: "/fonts/MyLocalFont-Regular.woff2", weight: "400", style: "normal" },
-    { path: "/fonts/MyLocalFont-Bold.woff2", weight: "700", style: "normal" },
-  ],
-  variable: "--font-my-local",
+// Load Inter font from Google
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -29,8 +26,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${myLocalFont.className} antialiased bg-background text-foreground`}>
+    <html lang="en" className="scroll-smooth dark">
+      <body className={`${inter.className} antialiased bg-background text-foreground`}>
         {children}
         <Analytics />
       </body>
